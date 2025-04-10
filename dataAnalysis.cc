@@ -69,14 +69,15 @@ int main() {
 	}
 	for (const pair<string, int> p : busiestTime) {	
 		if (p.second > topOpening1) {
-			if (topOpening2 > topOpening3) {
-				topOpening3 = topOpening2;
-			}
+			topOpening3 = topOpening2;
+			hour3 = hour2;
 			topOpening2 = topOpening1;
+			hour2 = hour1;
 			topOpening1 = p.second;
 			hour1 = p.first;
 		} else if (p.second > topOpening2) {
 			topOpening3 = topOpening2;
+			hour3 = hour2;
 			topOpening2 = p.second;
 			hour2 = p.first;
 		} else if (p.second > topOpening3) {
@@ -106,21 +107,22 @@ int main() {
     }
     for (const pair<string, int> p : slowestTime) {
         if (p.second < botOpening1) {
-            if (botOpening2 < botOpening3) {
-                botOpening3 = botOpening2;
-            }
+            botOpening3 = botOpening2;
+			slowhour3 = slowhour2;
             botOpening2 = botOpening1;
+			slowhour2 = slowhour1;
             botOpening1 = p.second;
             slowhour1 = p.first;
         } else if (p.second < botOpening2) {
             botOpening3 = botOpening2;
+			slowhour3= slowhour2;
             botOpening2 = p.second;
             slowhour2 = p.first;
         } else if (p.second < botOpening3) {
             botOpening3 = p.second;
             slowhour3 = p.first;
         }
-       // cout << p.first << " : " << p.second << endl; //for checking to see if top 3 is correct
+        //cout << p.first << " : " << p.second << endl; //for checking to see if top 3 is correct
     }
     cout << "The slowest hour at the Dental is " << slowhour1 << ":00 with " << botOpening1 << " patients coming in during this hour." << endl;
     cout << "The second slowest hour at the Dental is " << slowhour2 << ":00 with " << botOpening2 << " patients coming in during this hour." << endl;
